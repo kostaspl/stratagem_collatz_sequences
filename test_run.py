@@ -1,5 +1,6 @@
 import pytest
 from collatz import collatz_baseline, collatz_o1, collatz_o2, collatz_o3
+from multiprocessing import cpu_count
 
 results = {
     10: [20, 9, [9, 28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]],
@@ -19,7 +20,7 @@ def test_o1():
 
 def test_o2():
     for n0_max in results:
-        for procs in range(1, 4):
+        for procs in range(1, cpu_count() + 1):
             result = collatz_o2.calculate_collatz_sequences_mp(n0_max, procs)
             assert result == results[n0_max]
 
