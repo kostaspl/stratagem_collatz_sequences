@@ -41,13 +41,13 @@ Given the nature of this problem, calculating its time complexity is not possibl
 To predict the time needed for `n_max = 100000000`, we have to extrapolate from runs with smaller `n_max`.  
 By taking note of the average sequence length for each run, we can extrapolate for `n_max = 100000000`.
 
-`n_max` | Approximate Average Sequence Length | Approximate Number of Iterations | Relative Number of Iterations (compared to row below)
------------- | ------------ | ------------- | -------------
-100000000 | 180 (+24) | 18000000000 | 11.53x
-10000000 | ~156 (+24) | ~1560000000 | 11.81x
-1000000 | ~132 (+23) | ~132000000 | 12.11x
-100000 | ~109 (+23) | ~10900000 | 12.67x
-10000 | ~86 | ~860000 | -
+`n_max` | Approximate Average Sequence Length | Approximate Number of Iterations | Relative Number of Iterations (compared to row below) |
+------------:|:------------:| -------------:|:-------------:|
+100000000 | 180 (+24) | 18000000000 | 11.53x |
+10000000 | ~156 (+24) | ~1560000000 | 11.81x |
+1000000 | ~132 (+23) | ~132000000 | 12.11x |
+100000 | ~109 (+23) | ~10900000 | 12.67x |
+10000 | ~86 | ~860000 | - |
 
 As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.  
 This is actually in the same order of magnitude, close to (but not exactly) linear to `n_max`.
