@@ -49,8 +49,7 @@ By taking note of the average sequence length for each run, we can extrapolate f
 100000 | ~109 (+23) | ~10900000 | 12.67x |
 10000 | ~86 | ~860000 | - |
 
-As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.  
-This is actually in the same order of magnitude, close to (but not exactly) linear to `n_max`.
+As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.
 
 ## Future improvements
 One could consider extending the implementation that uses caching to utilize multiprocessing.
@@ -58,4 +57,4 @@ While that sounds promising, a quick implementation (using either Python's `Arra
 A significant issue is the synchronization needed for the shared cache. 
 Fine-grained locks could help with that.
 
-Or we could consider using a C extension. A draft implementation in pure C (with no optimizations or caching) took around 0.5 sec for `n_max = 1000000`!
+Otherwise, we could consider using a C extension. A draft implementation in pure C (with no optimizations or caching) took around 0.5 sec for `n_max = 1000000`!
