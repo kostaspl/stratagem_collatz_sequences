@@ -34,9 +34,22 @@ collatz_o2.py (2 processes) | 18.22
 collatz_o1.py | 33.77
 collatz_baseline.py | 52.52
 
-For `n_max = 1000000`, the longest sequence is produced when `n0 = 837799`. 
-
+For `n_max = 1000000`, the longest sequence is produced when `n0 = 837799`.  
 Its length is 525 (or 524 steps) and its last 20 elements are `61, 184, 92, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1`.
+
+Given the nature of this problem, calculating its time complexity is not possible.  
+To predict the time needed for `n_max = 100000000`, we have to extrapolate from runs with smaller `n_max`.
+By taking note of the average sequence length for each run, we can extrapolate for `n_max = 100000000`.
+`n_max` | Avg. Seq. Len. (approx.) | Number of iterations (approx.) | Number of iterations relative to row below
+------------ | ------------ | ------------- | -------------
+100000000 | 180 | 18000000000 | 11.53x
+10000000 | ~156 | ~1560000000 | 11.81x
+1000000 | ~132 | ~132000000 | 12.11x
+100000 | ~109 | ~10900000 | 12.67x
+10000 | ~86 | ~860000 | -
+
+As a result, `n_max = 100000000` should be around 139.62 times slower than `n_max = 1000000`.
+
 
 ## Future improvements
 One could consider extending the implementation that uses caching to utilize multiprocessing.
