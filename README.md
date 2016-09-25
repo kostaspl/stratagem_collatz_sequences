@@ -40,6 +40,7 @@ Its length is 525 (or 524 steps) and its last 20 elements are `61, 184, 92, 46, 
 Given the nature of this problem, calculating its time complexity is not possible.  
 To predict the time needed for `n_max = 100000000`, we have to extrapolate from runs with smaller `n_max`.
 By taking note of the average sequence length for each run, we can extrapolate for `n_max = 100000000`.
+
 `n_max` | Avg. Seq. Len. (approx.) | Number of iterations (approx.) | Number of iterations relative to row below
 ------------ | ------------ | ------------- | -------------
 100000000 | 180 | 18000000000 | 11.53x
@@ -48,7 +49,7 @@ By taking note of the average sequence length for each run, we can extrapolate f
 100000 | ~109 | ~10900000 | 12.67x
 10000 | ~86 | ~860000 | -
 
-As a result, `n_max = 100000000` should be around 139.62 times slower than `n_max = 1000000`.
+As a result, `n_max = 100000000` should be around 139 times slower than `n_max = 1000000`.
 
 
 ## Future improvements
