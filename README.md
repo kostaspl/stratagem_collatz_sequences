@@ -51,7 +51,7 @@ By taking note of the average sequence length for each run, we can extrapolate f
 
 As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.
 
-## Future improvements
+## Future Improvements
 One could consider extending the implementation that uses caching to utilize multiprocessing.
 While that sounds promising, a quick implementation (using either Python's `Array` or `Manager().dict()`) showed major slow down.
 A significant issue is the synchronization needed for the shared cache. 
