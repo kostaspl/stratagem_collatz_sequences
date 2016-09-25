@@ -24,7 +24,7 @@ A dictionary works as a cache, storing each `n0`'s sequence length. This improve
 The cache does not store the intermediate sequences, only their lengths. In the end, the longest sequence is calculated.
 
 ## Performance
-Here is the time required for a quick run (`n_max = 1000000`) on a machine equipped with an Intel Core i5-2500K processor and 16GB RAM, running Python 3.5.2 on Windows 10 64-bit:
+Here is the time required for a quick run (`n_max = 1M`) on a machine equipped with an Intel Core i5-2500K processor and 16GB RAM, running Python 3.5.2 on Windows 10 64-bit:
 
 Target | Time (s)
 ------------ | -------------
@@ -34,22 +34,21 @@ collatz_o2.py (2 processes) | 18.22
 collatz_o1.py | 33.77
 collatz_baseline.py | 52.52
 
-For `n_max = 1000000`, the longest sequence is produced when `n0 = 837799`.  
+For `n_max = 1M`, the longest sequence is produced when `n0 = 837799`.  
 Its length is 525 (or 524 steps) and its last 20 elements are `61, 184, 92, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1`.
 
-Given the nature of this problem, calculating its time complexity is not possible.  
-To predict the time needed for `n_max = 100000000`, we have to extrapolate from runs with smaller `n_max`.  
-By taking note of the average sequence length for each run, we can extrapolate for `n_max = 100000000`.
+Given the nature of this problem, calculating its time complexity is not possible, as it has not been proven to be true for every integer. 
+To predict the time needed for `n_max = 100M`, we can extrapolate from runs with smaller `n_max`.  
 
 `n_max` | Approximate Average Sequence Length | Approximate Number of Iterations | Relative Number of Iterations (compared to row below) |
 ------------:|:------------:| -------------:|:-------------:|
-100000000 | 180 (+24) | 18000000000 | 11.53x |
-10000000 | ~156 (+24) | ~1560000000 | 11.81x |
-1000000 | ~132 (+23) | ~132000000 | 12.11x |
-100000 | ~109 (+23) | ~10900000 | 12.67x |
-10000 | ~86 | ~860000 | - |
+100M | 180 (+24) | 18000000000 | 11.53x |
+10M | ~156 (+24) | ~1560000000 | 11.81x |
+1M | ~132 (+23) | ~132000000 | 12.11x |
+100K | ~109 (+23) | ~10900000 | 12.67x |
+10K | ~86 | ~860000 | - |
 
-As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.
+As a result, `n_max = 100M` should be around 136 times slower than `n_max = 1M`.
 
 ## Future Improvements
 One could consider extending the implementation that uses caching to utilize multiprocessing.
@@ -57,4 +56,4 @@ While that sounds promising, a quick implementation (using either Python's `Arra
 A significant issue is the synchronization needed for the shared cache. 
 Fine-grained locks could help with that.
 
-Otherwise, we could consider using a C extension. A draft implementation in pure C (with no optimizations or caching) took around 0.5 sec for `n_max = 1000000`!
+Otherwise, we could consider using a C extension. A draft implementation in pure C (with no optimizations or caching) took around 0.5 sec for `n_max = 1M`!
