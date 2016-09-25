@@ -38,7 +38,7 @@ For `n_max = 1000000`, the longest sequence is produced when `n0 = 837799`.
 Its length is 525 (or 524 steps) and its last 20 elements are `61, 184, 92, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1`.
 
 Given the nature of this problem, calculating its time complexity is not possible.  
-To predict the time needed for `n_max = 100000000`, we have to extrapolate from runs with smaller `n_max`.
+To predict the time needed for `n_max = 100000000`, we have to extrapolate from runs with smaller `n_max`.  
 By taking note of the average sequence length for each run, we can extrapolate for `n_max = 100000000`.
 
 `n_max` | Approximate Average Sequence Length | Approximate Number of Iterations | Relative Number of Iterations (compared to row below)
@@ -49,7 +49,7 @@ By taking note of the average sequence length for each run, we can extrapolate f
 100000 | ~109 (+23) | ~10900000 | 12.67x
 10000 | ~86 | ~860000 | -
 
-As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.
+As a result, `n_max = 100000000` should be around 136 times slower than `n_max = 1000000`.  
 This is actually in the same order of magnitude, close to (but not exactly) linear to `n_max`.
 
 ## Future improvements
