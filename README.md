@@ -43,3 +43,5 @@ One could consider extending the implementation that uses caching to utilize mul
 While that sounds promising, a quick implementation (using either Python's `Array` or `Manager().dict()`) showed major slow down.
 A significant issue is the synchronization needed for the shared cache. 
 Fine-grained locks could help with that.
+
+Or we could consider using a C extension. A draft implementation in pure C (with no optimizations or caching) took around 0.5 sec for `n_max = 1000000`!
