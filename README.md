@@ -56,4 +56,26 @@ While that sounds promising, a quick implementation (using either Python's `Arra
 A significant issue is the synchronization needed for the shared cache. 
 Fine-grained locks could help with that.
 
-Otherwise, we could consider using a C extension. A draft implementation in pure C (with no optimizations or caching) took around 0.5 sec for `n_max = 1M`!
+## Bonus
+[bonus](bonus/) folder contains 2 Cython implementations.  
+[cython_impl.pyx](bonus/cython_impl.pyx) is equivalent to [collatz_o1.py](collatz/collatz_o1.py),
+while [cython_mp_impl.pyx](bonus/cython_mp_impl.pyx) is equivalent to [collatz_o2.py](collatz/collatz_o2.py) as it uses `multiprocessing`.
+
+Cython implementations have not yet been integrated in tests, but here are some performance figures.  
+For `n_max = 1M`:
+
+Target | Time (s)
+------------ | -------------
+cython_impl.pyx | 0.23
+cython_mp_impl.pyx | 0.23
+
+And here's a full comparison for `n_max = 10M`:
+
+Target | Time (s)
+------------ | -------------
+cython_mp_impl.pyx (4 processes) | 0.89
+cython_impl.pyx | 2.30
+collatz_o3.py | 19.79
+collatz_o2.py (4 processes) | 117.25
+collatz_o1.py | 364.57
+collatz_baseline.py | 624.41

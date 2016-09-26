@@ -24,7 +24,7 @@ def calculate_collatz_sequences(n_max):
 if __name__ == "__main__":
     start_time = time.time()
     
-    result = calculate_collatz_sequences(100000000)
+    result = calculate_collatz_sequences(1000000)
     
     print("Longest sequence is for n0 =", result[1])
     print("The last", min(result[0], 20), "elements of this sequence are", result[2][-20:])
